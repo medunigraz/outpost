@@ -1,0 +1,12 @@
+[Unit]
+Description=%I - Recording Upload Server
+
+[Service]
+Type=simple
+Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
+WorkingDirectory=/var/www/outpost/%i
+User=www-data-api
+ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 /usr/bin/django-admin recordinguploadserver --settings outpost.django.settings"
+
+[Install]
+WantedBy=outpost@%i.target
