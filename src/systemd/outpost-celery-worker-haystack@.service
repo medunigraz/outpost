@@ -9,6 +9,7 @@ User=www-data-api
 ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m celery worker -E -A outpost.django.celery --loglevel=WARNING -n 'haystack@%i' -c 1 -Q haystack"
 LimitNOFILE=500000
 LimitNPROC=500000
+UMask=0027
 
 [Install]
 WantedBy=outpost@%i.target

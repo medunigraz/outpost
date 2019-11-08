@@ -11,6 +11,7 @@ User=www-data-api
 RuntimeDirectory=gunicorn
 RuntimeDirectoryPreserve=yes
 ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 /usr/bin/gunicorn3 -c python:outpost.django.gunicorn -b unix:/run/gunicorn/%i.sock outpost.django.asgi:application"
+UMask=0027
 
 [Install]
 WantedBy=outpost@%i.target

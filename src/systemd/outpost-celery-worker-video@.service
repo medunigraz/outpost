@@ -7,6 +7,7 @@ Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
 WorkingDirectory=/var/www/outpost/%i
 User=www-data-api
 ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m celery worker -E -A outpost.django.celery --loglevel=WARNING -n 'video@%i' --autoscale=10,3 -Q video"
+UMask=0027
 
 [Install]
 WantedBy=outpost@%i.target

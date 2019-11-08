@@ -9,6 +9,7 @@ User=www-data-api
 ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m celery worker -E -A outpost.django.celery --loglevel=WARNING -n 'maintainance@%i' --autoscale=20,10 -Q maintainance --purge"
 LimitNOFILE=500000
 LimitNPROC=500000
+UMask=0027
 
 [Install]
 WantedBy=outpost@%i.target
