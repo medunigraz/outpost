@@ -1,0 +1,13 @@
+[Unit]
+Description=%I - Salt Event Receiver
+
+[Service]
+Type=simple
+Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
+WorkingDirectory=/var/www/outpost/%i
+User=www-data-api
+ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 /usr/bin/django-admin event_receiver --settings outpost.django.settings"
+UMask=0027
+
+[Install]
+WantedBy=outpost@%i.target
