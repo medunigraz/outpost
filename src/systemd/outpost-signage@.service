@@ -1,0 +1,17 @@
+[Unit]
+Description=%I - Signage
+
+[Service]
+Type=simple
+Environment=DJANGO_SETTINGS_MODULE=outpost.django.settings
+Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
+EnvironmentFile=-/etc/django/%i.env
+WorkingDirectory=/var/www/outpost/%i
+User=www-data-api
+RuntimeDirectory=signage
+RuntimeDirectoryPreserve=yes
+ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m django signage"
+UMask=0027
+
+[Install]
+WantedBy=outpost@%i.target
