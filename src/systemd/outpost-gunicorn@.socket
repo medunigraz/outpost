@@ -1,5 +1,6 @@
 [Unit]
 Description=%I - gunicorn
+BindsTo=outpost-gunicorn@%i.service
 
 [Socket]
 ListenStream=/run/outpost/%i.sock
