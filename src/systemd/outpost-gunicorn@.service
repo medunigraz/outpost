@@ -2,15 +2,16 @@
 Description=%I - gunicorn
 
 [Service]
-Type=simple
+Type=notify
 Environment=DJANGO_SETTINGS_MODULE=outpost.django.settings
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
 EnvironmentFile=-/etc/django/%i.env
 WorkingDirectory=/var/www/outpost/%i
 User=www-data-api
-RuntimeDirectory=gunicorn
+RuntimeDirectory=outpost
 RuntimeDirectoryPreserve=yes
-ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 /usr/bin/gunicorn3 -c python:outpost.django.gunicorn -b unix:/run/gunicorn/%i.sock outpost.django.asgi:application"
+ExecSearchPath=/var/www/outpost/%i/bin
+ExecStart=python3 -m gunicorn -c python:outpost.django.gunicorn outpost.django.asgi:application
 UMask=0027
 
 [Install]
