@@ -10,7 +10,7 @@ WorkingDirectory=/var/www/outpost/%i
 User=www-data-api
 RuntimeDirectory=outpost
 RuntimeDirectoryPreserve=yes
-ExecSearchPath=/var/www/outpost/%i/bin
+ExecSearchPath=/var/www/outpost/%i/bin:/usr/bin:/bin
 ExecStart=python3 -m gunicorn -c python:outpost.django.gunicorn outpost.django.asgi:application
 UMask=0027
 

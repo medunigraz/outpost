@@ -6,7 +6,8 @@ Type=simple
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
 WorkingDirectory=/var/www/outpost/%i
 User=www-data-api
-ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m celery -A outpost.django.celery beat --loglevel=WARNING -s /var/lib/celery/%i/beat.state --pidfile /var/lib/celery/%i/beat.pid"
+ExecSearchPath=/var/www/outpost/%i/bin:/usr/bin:/bin
+ExecStart=python3 -m celery -A outpost.django.celery beat --loglevel=WARNING -s /var/lib/celery/%i/beat.state --pidfile /var/lib/celery/%i/beat.pid
 UMask=0027
 
 [Install]

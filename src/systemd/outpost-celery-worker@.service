@@ -6,7 +6,8 @@ Type=simple
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/django/%i.py
 WorkingDirectory=/var/www/outpost/%i
 User=www-data-api
-ExecStart=/bin/sh -c "/var/www/outpost/%i/bin/python3 -m celery -A outpost.django.celery worker -E --loglevel=WARNING -n 'default@%i' --autoscale=10,3 -Q default"
+ExecSearchPath=/var/www/outpost/%i/bin:/usr/bin:/bin
+ExecStart=python3 -m celery -A outpost.django.celery worker -E --loglevel=WARNING -n 'default@%i' --autoscale=10,3 -Q default
 UMask=0027
 
 [Install]
