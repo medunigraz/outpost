@@ -5,7 +5,7 @@ Description=%I - Bloomfilter
 Type=notify
 Environment=DJANGO_SETTINGS_MODULE=outpost.django.settings
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i/django.py
-EnvironmentFile=-/etc/outpost/%i/environment
+EnvironmentFile=-/etc/outpost/%i/bloomfilter.env
 WorkingDirectory=/srv/outpost/%i/runtime
 User=outpost
 RuntimeDirectory=outpost

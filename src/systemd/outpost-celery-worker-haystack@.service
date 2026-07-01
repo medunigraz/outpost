@@ -1,10 +1,10 @@
 [Unit]
-Description=%I - Celery Worker
+Description=%I - Celery Worker Haystack
 
 [Service]
 Type=simple
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i/django.py
-EnvironmentFile=-/etc/outpost/%i/environment
+EnvironmentFile=-/etc/outpost/%i/celery-worker-haystack.env
 WorkingDirectory=/srv/outpost/%i/runtime
 User=outpost
 ExecSearchPath=/srv/outpost/%i/runtime/bin:/usr/bin:/bin
