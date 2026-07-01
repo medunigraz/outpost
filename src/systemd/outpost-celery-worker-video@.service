@@ -3,11 +3,13 @@ Description=%I - Celery Worker
 
 [Service]
 Type=simple
-Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i.py
+Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i/django.py
+Environment=CELERY_AUTOSCALE_VIDEO=20,4
+EnvironmentFile=-/etc/outpost/%i/environment
 WorkingDirectory=/srv/outpost/%i/runtime
 User=outpost
 ExecSearchPath=/srv/outpost/%i/runtime/bin:/usr/bin:/bin
-ExecStart=python3 -m celery -A outpost.django.celery worker -E --loglevel=WARNING -n 'video@%i' --autoscale=20,3 -Q video
+ExecStart=python3 -m celery -A outpost.django.celery worker -E --loglevel=WARNING -n 'video@%i' --autoscale="${CELERY_AUTOSCALE_VIDEO}" -Q video
 UMask=0027
 
 [Install]
