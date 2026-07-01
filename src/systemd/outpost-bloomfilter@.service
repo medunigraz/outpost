@@ -1,13 +1,16 @@
 [Unit]
-Description=%I - Celery Worker
+Description=%I - Bloomfilter
 
 [Service]
-Type=simple
+Type=notify
+Environment=DJANGO_SETTINGS_MODULE=outpost.django.settings
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i.py
 WorkingDirectory=/srv/outpost/%i/runtime
 User=outpost
+RuntimeDirectory=outpost
+RuntimeDirectoryPreserve=yes
 ExecSearchPath=/srv/outpost/%i/runtime/bin:/usr/bin:/bin
-ExecStart=python3 -m celery -A outpost.django.celery worker -E --loglevel=WARNING -n 'default@%i' --autoscale=10,3 -Q default
+ExecStart=python3 -m django bloom_server
 UMask=0027
 
 [Install]
