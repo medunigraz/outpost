@@ -2,7 +2,8 @@
 Description=%I - Salt Event Receiver
 
 [Service]
-Type=simple
+Type=notify
+Environment=DJANGO_SETTINGS_MODULE=outpost.django.settings
 Environment=DJANGO_LOCAL_CONFIGURATION=/etc/outpost/%i/django.py
 EnvironmentFile=-/etc/outpost/%i/salteventreceiver.env
 WorkingDirectory=/srv/outpost/%i/runtime
