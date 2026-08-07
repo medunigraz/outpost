@@ -26,3 +26,6 @@ line_length = 120
 known_first_party = "outpost"
 known_third_party = "django"
 default_section = "THIRDPARTY"
+
+[tool.setuptools_scm.scm.git]
+describe_command = "git describe --dirty --tags"
